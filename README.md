@@ -83,6 +83,9 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
+# all tests in watch mode
+$ npm run test:watch
+
 # e2e tests
 $ npm run test:e2e
 
@@ -92,10 +95,12 @@ $ npm run test:cov
 
 ## Swagger Documentation
 
-In order to make the application more human-readable and for a simple understanding of the API's , we have added swagger support to our API's. On installation of dependencies and running the application , the swagger document is build up and can be accessed by 
+In order to make the application more human-readable and for a simple understanding of the API's , we have added swagger support to our API's. On installation of dependencies and running the application , the swagger document is build up and can be accessed by
+
 ```bash
 http://localhost:5000/swagger
-``` 
+```
+
 Please note if the NODE_PORT in your env is different than 5000 , you can change it accordingly
 
 ## Support

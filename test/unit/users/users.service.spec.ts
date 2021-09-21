@@ -8,6 +8,7 @@ import {
 } from '../../../src/utils/interfaces/apiResponse.interface';
 import { IUser } from '../../../src/utils/interfaces/user.interface';
 import {
+  defaultUser,
   addUserData,
   testingUserId,
   updateUserData,
@@ -27,6 +28,7 @@ describe('UsersService', () => {
   let usersService: UsersService;
   let testingModule: TestingModule;
   let createdUserId: string;
+  let defaultCreatedUser: any;
   beforeAll(async () => {
     testingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -34,9 +36,11 @@ describe('UsersService', () => {
     }).compile();
 
     usersService = testingModule.get<UsersService>(UsersService);
+    defaultCreatedUser = await usersService.createUser(defaultUser);
   });
 
   afterAll(async () => {
+    await usersService.permanentDeleteUser(defaultCreatedUser.id);
     await usersService.permanentDeleteUser(createdUserId);
     testingModule.close();
   });

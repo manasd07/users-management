@@ -7,6 +7,8 @@ import {
   Delete,
   Logger,
   Put,
+  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -46,6 +48,7 @@ export class UsersController {
   @ApiInternalServerErrorResponse({
     description: 'Internal Server Error',
   })
+  @UsePipes(new ValidationPipe({ transform: true }))
   @Post('add')
   public async createUser(
     @Body() createUserDto: CreateUserDto,
