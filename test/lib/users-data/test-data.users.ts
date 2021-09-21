@@ -6,7 +6,13 @@ export const addUserData = {
 
 export const testingUserId = 'e3ac94fd-2b97-49d1-a8ba-ba2318c92145';
 
-export const existingEmailId = 'testUser@gmail.com'
+export const existingEmailId = 'testUser@gmail.com';
+
+export const defaultUser = {
+  email: existingEmailId,
+  givenName: 'Default',
+  familyName: 'Default',
+};
 
 export const updateUserData = {
   ...addUserData,
