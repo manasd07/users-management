@@ -54,6 +54,16 @@ Database setup is necessary once the above steps are done so as to ensure that w
 
 In order to run the project , we have certain dependent private variables which are kept in a .env file . This is not included in the repository to maintain the confidentiality. So , in the root directory , you can find a .env-example file . Add a .env to the root directory of the project and add contents similar to **.env-example** file
 
+## Typeorm
+
+We are using Typeorm for Object Relational Mapping in order to connect and deal with database interactions. In order to load up the schema according to required entity , so inside our **.env** one can set :-
+
+```bash
+DB_SYNCHRONIZATION=true
+```
+
+This will load up the users table on the schema setup.Another option is to manually add tables to database. That's it , we are all done with database setups with typeorm . Now we can install dependencies for project and start interacting with the API.
+
 ## Installation of dependencies
 
 After taking fresh clone of the project , one can install all of the required dependencies with the following command
