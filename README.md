@@ -50,6 +50,10 @@ Database setup is necessary once the above steps are done so as to ensure that w
 - Add a schema named users_schema to the connection setup at localhost.
 - Database setup is done. Now we can easily jump to the application and start it .
 
+## Adding environment variables
+
+In order to run the project , we have certain dependent private variables which are kept in a .env file . This is not included in the repository to maintain the confidentiality. So , in the root directory , you can find a .env-example file . Add a .env to the root directory of the project and add contents similar to **.env-example** file
+
 ## Installation of dependencies
 
 After taking fresh clone of the project , one can install all of the required dependencies with the following command
@@ -85,6 +89,14 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Swagger Documentation
+
+In order to make the application more human-readable and for a simple understanding of the API's , we have added swagger support to our API's. On installation of dependencies and running the application , the swagger document is build up and can be accessed by 
+```bash
+http://localhost:5000/swagger
+``` 
+Please note if the NODE_PORT in your env is different than 5000 , you can change it accordingly
 
 ## Support
 
