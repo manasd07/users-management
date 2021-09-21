@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
 /**
  * DTO For Create User API
@@ -20,6 +20,7 @@ export class CreateUserDto {
   givenName: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString()
   familyName: string;
 }

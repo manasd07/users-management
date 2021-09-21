@@ -40,9 +40,9 @@ describe('UsersService', () => {
   });
 
   afterAll(async () => {
-    await usersService.permanentDeleteUser(defaultCreatedUser.id);
     await usersService.permanentDeleteUser(createdUserId);
-    testingModule.close();
+    await usersService.permanentDeleteUser(defaultCreatedUser.data?.id);
+    await testingModule.close();
   });
 
   it('should be defined', () => {
