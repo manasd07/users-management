@@ -16,7 +16,16 @@ import {
   IDeleteResponse,
 } from '../../utils/interfaces/apiResponse.interface';
 import { IUser } from '../../utils/interfaces/user.interface';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiNoContentResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
+@ApiTags('Users Controller API')
 @Controller('users')
 export class UsersController {
   private logger: Logger;
@@ -28,6 +37,15 @@ export class UsersController {
    * @param createUserDto
    * @returns createdUser
    */
+  @ApiCreatedResponse({
+    description: 'User Added successfully',
+  })
+  @ApiBadRequestResponse({
+    description: 'User already exists',
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal Server Error',
+  })
   @Post('add')
   public async createUser(
     @Body() createUserDto: CreateUserDto,
@@ -40,6 +58,15 @@ export class UsersController {
    * GET '/users' | [Gets list of all users]
    * @returns all users
    */
+  @ApiOkResponse({
+    description: 'Successfully found users',
+  })
+  @ApiNoContentResponse({
+    description: 'No users found in database',
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal Server Error',
+  })
   @Get()
   public findAllUsers(): Promise<IApiResponse<IUser[]>> {
     this.logger.verbose(`Get All Users`);
@@ -51,6 +78,15 @@ export class UsersController {
    * @param id
    * @returns User by id
    */
+  @ApiOkResponse({
+    description: 'Successfully found user',
+  })
+  @ApiBadRequestResponse({
+    description: 'User not found',
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal Server Error',
+  })
   @Get(':id')
   public findUserById(@Param('id') id: string): Promise<IApiResponse<IUser>> {
     this.logger.verbose(`Get User By ID : ${id}`);
@@ -62,7 +98,20 @@ export class UsersController {
    * @param updateUserDto
    * @returns Updated User
    */
+
   @Put('update')
+  @ApiOkResponse({
+    description: 'Successfully updated user',
+  })
+  @ApiBadRequestResponse({
+    description: 'User with this id does not exist',
+  })
+  @ApiBadRequestResponse({
+    description: 'User with this email already exists',
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal Server Error',
+  })
   public async updateUser(
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<IApiResponse<IUser>> {
@@ -75,6 +124,15 @@ export class UsersController {
    * @param id
    * @returns IDeleteResponse
    */
+  @ApiOkResponse({
+    description: 'User Deleted Successfully',
+  })
+  @ApiBadRequestResponse({
+    description: 'User with this id does not exist',
+  })
+  @ApiInternalServerErrorResponse({
+    description: 'Internal Server Error',
+  })
   @Delete(':id')
   public async deleteUser(
     @Param('id') id: string,
