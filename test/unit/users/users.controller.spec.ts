@@ -69,7 +69,7 @@ describe('UsersController', () => {
     expect(await usersController.findUserById(testingUserId)).toBe(
       getUserByIdResponse,
     );
-    expect(usersService.findUserById).toHaveBeenCalledWith(testingUserId);
+    expect(usersService.findUserById).toHaveBeenCalledWith(testingUserId.id);
   });
 
   it('should call "updateUser" from "UsersService"', async () => {
@@ -89,6 +89,6 @@ describe('UsersController', () => {
     expect(await usersController.deleteUser(testingUserId)).toBe(
       deleteUserResponse,
     );
-    expect(usersService.deleteUser).toHaveBeenCalledWith(testingUserId);
+    expect(usersService.deleteUser).toHaveBeenCalledWith(testingUserId.id);
   });
 });
