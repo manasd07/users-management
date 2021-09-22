@@ -13,6 +13,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { IdParamsDto } from './dto/id-params.dto';
 import {
   IApiResponse,
   IDeleteResponse,
@@ -91,9 +92,11 @@ export class UsersController {
     description: 'Internal Server Error',
   })
   @Get(':id')
-  public findUserById(@Param('id') id: string): Promise<IApiResponse<IUser>> {
-    this.logger.verbose(`Get User By ID : ${id}`);
-    return this.usersService.findUserById(id);
+  public findUserById(
+    @Param() params: IdParamsDto,
+  ): Promise<IApiResponse<IUser>> {
+    this.logger.verbose(`Get User By ID : ${params.id}`);
+    return this.usersService.findUserById(params.id);
   }
 
   /**
@@ -138,9 +141,9 @@ export class UsersController {
   })
   @Delete(':id')
   public async deleteUser(
-    @Param('id') id: string,
+    @Param() params: IdParamsDto,
   ): Promise<IApiResponse<IDeleteResponse>> {
-    this.logger.verbose(`Delete User with ID : ${id}`);
-    return await this.usersService.deleteUser(id);
+    this.logger.verbose(`Delete User with ID : ${params.id}`);
+    return await this.usersService.deleteUser(params.id);
   }
 }

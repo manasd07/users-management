@@ -1,15 +1,11 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { IntersectionType, PartialType } from '@nestjs/swagger';
 import { CreateUserDto } from './create-user.dto';
+import { IdParamsDto } from './id-params.dto';
 
 /**
  * DTO For Update User API
  */
-export class UpdateUserDto extends PartialType(CreateUserDto) {
-  @ApiProperty({ type: () => String })
-  @IsNotEmpty()
-  @IsString()
-  @IsUUID()
-  id: string;
-}
+export class UpdateUserDto extends IntersectionType(
+  PartialType(CreateUserDto),
+  IdParamsDto,
+) {}
