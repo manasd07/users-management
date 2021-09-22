@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { User } from 'src/modules/users/entities/user.entity';
 import { getMetadataArgsStorage } from 'typeorm';
 
 @Injectable()
