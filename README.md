@@ -36,9 +36,9 @@
 
 The Project comes along with some prerequisites in order to run without blockers. The pre-installation of following such things are a mandate:
 
-- An IDE (Eg: Visual Studio Code)
-- DBeaver application (As a database manager for Postgres)
-- Postgresql installed in system
+- An IDE (Eg: Visual Studio Code) . Ref Link: [VS_CODE Official site](https://code.visualstudio.com/)
+- DBeaver application (As a database manager for Postgres). Ref link: [DBeaver Community](https://dbeaver.io/)
+- Postgresql installed in system depending on the OS. Ref Link: [Postgres Official site](https://www.postgresql.org/)
 
 ## Database Setup
 
