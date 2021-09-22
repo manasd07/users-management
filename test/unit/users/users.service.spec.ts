@@ -78,7 +78,7 @@ describe('UsersService', () => {
 
   it('should return error if userId does not exist', async () => {
     const result: IApiResponse<IUser> = await usersService.findUserById(
-      testingUserId,
+      testingUserId.id,
     );
     assertUserDoesNotExist(result);
   });
