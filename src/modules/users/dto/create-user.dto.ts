@@ -12,21 +12,34 @@ import {
  * DTO For Create User API
  */
 export class CreateUserDto {
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    description: 'email id of user',
+    example: 'test@gmail.com',
+  })
   @IsNotEmpty()
   @IsString()
   @IsEmail()
   @Transform((email) => email.value.toLowerCase())
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    description: 'Given Name or First Name of user',
+    example: 'test_given_name',
+  })
   @IsNotEmpty()
   @IsString()
   @MinLength(3)
   givenName: string;
 
-  @ApiPropertyOptional()
-  @IsOptional()
+  @ApiProperty({
+    required: true,
+    description: 'Family Name or Last Name of user',
+    example: 'test_family_name',
+  })
+  @IsNotEmpty()
   @IsString()
+  @MinLength(3)
   familyName: string;
 }
