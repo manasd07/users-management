@@ -81,7 +81,7 @@ $ npm run test
 $ npm run test:watch
 ```
 
-## Swagger Documentation info
+### Swagger Documentation info
 
 In order to make the application more human-readable and for a simple understanding of the API's , we have added swagger support to our API's. On installation of dependencies and running the application , the swagger document is build up and can be accessed by
 
